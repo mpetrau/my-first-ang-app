@@ -1,0 +1,44 @@
+<h1>Heya there, {{name}}!</h1>
+<ul>
+  <li>You are {{age}} year old</li>
+  <li>You live in {{address.street}}, {{address.city}}</li>
+</ul>
+
+<button (click)="toggleEdit()">Edit User</button>
+
+<div *ngIf=isEdit >
+  <h3>Edit User</h3>
+  <form action="">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" [(ngModel)]="age" name="age">
+    </div>
+  </form>
+</div>
+
+<h3>Hobbies</h3>
+<form (submit)="addHobby(hobby.value)">
+  <div>
+    <label for="hobby">Hobby:</label>
+    <input type="text" #hobby>
+  </div>
+</form>
+<ol>
+  <li *ngFor="let hobby of hobbies">
+    {{hobby}} <button (click)="deleteHobby(hobby)">X</button>
+  </li>
+</ol>
+
+<h3>Posts</h3>
+<div *ngFor="let post of posts">
+  <h5>{{post.title}}</h5>
+  <p>{{post.body}}</p>
+</div>
